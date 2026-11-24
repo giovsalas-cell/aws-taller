@@ -1,0 +1,35 @@
+name: Taller1
+
+on:
+  push:
+    branches: [main]
+
+  worjflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu.latest
+    steps:
+      - name: obtener el codigo
+        uses: actions/checkout@v7
+      - name: crear carpeta en el servidor
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{secrets.IP_PUBLICA}}
+          username: ${{secrets.username}}
+          key: ${{secrets.key}}
+          source: .
+          target: "/home/${{secrets.username}}/proyecto1"
+          overwrite: true
+      - name: levantar contenedor
+        uses: appleboy/ssh-actions@v1
+        with:
+          host: ${{secrets.IP_PUBLICA}}
+          username: ${{secrets.username}}
+          key: ${{secrets.key}}
+          script: |
+            cd ~/${{secrets.username}}/proyecto1
+            docker compose down
+            docker compose up -d --build
