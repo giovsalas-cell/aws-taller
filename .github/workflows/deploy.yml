@@ -19,18 +19,18 @@ jobs:
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.IP_PUBLIC }}
-          username: ${{ secrets.username }}
-          key: ${{ secrets.key }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           source: "."
-          target: "/home/${{ secrets.username }}/proyecto1"
+          target: "/home/${{ secrets.USERNAME }}/proyecto1"
           overwrite: true
 
       - name: levantar contenedor
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.IP_PUBLIC }}
-          username: ${{ secrets.username }}
-          key: ${{ secrets.key }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           script: |
             cd ~/proyecto1
             docker compose down
