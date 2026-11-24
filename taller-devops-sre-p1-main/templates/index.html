@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b15">
+  <meta name="description" content="Taller 01 de DevOps / SRE. Mi primer proyecto Python + Docker + GitHub Actions + AWS EC2.">
+  <title>Taller 01 — DevOps / SRE Lab</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="logo" href="#inicio" aria-label="Volver al inicio">
+        <span class="logo-glyph" aria-hidden="true">&gt;_</span>
+        <span>DEVOPS<span class="logo-slash">/</span>SRE <span class="logo-light">LAB</span></span>
+      </a>
+      <div class="header-right">
+        <span class="header-tag">COHORTE / 001</span>
+        <span class="pill live-pill"><span class="live-dot" aria-hidden="true"></span> SYSTEM ONLINE</span>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="square-marker"></span> LABORATORIO PRÁCTICO <span class="eyebrow-divider">/</span> SESIÓN 01</div>
+          <div class="hero-count" aria-hidden="true">01<span>.</span></div>
+          <h1 id="hero-title">Tu código.<br><span class="gradient-text">Tu pipeline.</span><br>Tu nube<span class="accent-period">.</span></h1>
+          <p class="hero-description">Bienvenido a <strong>TALLER 01 DE DEVOPS / SRE</strong>. Un laboratorio donde convertimos un commit en una aplicación real, desplegada en la nube.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#personalizar">Personalizar mi sitio <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#pipeline">Explorar el pipeline <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-tech" aria-label="Tecnologías del taller">
+            <span>PYTHON</span><i></i><span>DOCKER</span><i></i><span>GITHUB ACTIONS</span><i></i><span>AWS EC2</span>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Panel de despliegue de muestra">
+          <div class="signal-ring ring-outer" aria-hidden="true"></div>
+          <div class="signal-ring ring-mid" aria-hidden="true"></div>
+          <div class="signal-ring ring-inner" aria-hidden="true"></div>
+          <div class="orbit-marker orbit-a" aria-hidden="true"></div>
+          <div class="orbit-marker orbit-b" aria-hidden="true"></div>
+          <div class="hero-core"><span>DEV</span><span class="hero-core-divider">/</span><span>SRE</span><small>BUILD. SHIP. OBSERVE.</small></div>
+          <div class="floating-chip chip-top"><span class="chip-light"></span> BUILD SUCCESS</div>
+          <div class="floating-chip chip-bottom">↳ REGION <b>AWS CLOUD</b></div>
+          <div class="side-coordinate">SYS.NODE_01 — 0x01 / CLOUD</div>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Datos del proyecto">
+        <div class="metric"><span class="metric-label">ESTADO ACTUAL</span><strong><span class="online-dot"></span> Desplegado</strong></div>
+        <div class="metric"><span class="metric-label">STACK DEL LAB</span><strong>Python + Docker</strong></div>
+        <div class="metric"><span class="metric-label">VERSIÓN / COMMIT</span><strong class="mono" id="commit-sha">{{ short_sha }}</strong></div>
+        <div class="metric"><span class="metric-label">AMBIENTE</span><strong>Amazon EC2</strong></div>
+      </section>
+
+      <section class="pipeline-section section" id="pipeline">
+        <div class="section-heading">
+          <div><span class="kicker">01 — AUTOMATIZACIÓN</span><h2>De un <em>push</em> a producción<span class="accent-period">.</span></h2></div>
+          <p>Cada cambio recorre una cadena. Hoy vas a entenderla y ejecutarla.</p>
+        </div>
+        <div class="pipeline-grid" aria-label="Etapas del despliegue">
+          <article class="pipeline-card"><span class="step-number">01 / SOURCE</span><div class="step-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="13" cy="10" r="5"/><circle cx="13" cy="38" r="5"/><circle cx="36" cy="25" r="5"/><path d="M13 15v18M18 13c9 0 18 5 18 12"/></svg></div><h3>Git + GitHub</h3><p>Versiona tu código y publica tus cambios con <code>git push</code>.</p><span class="card-tail">COMMIT_001 <span>↗</span></span></article>
+          <article class="pipeline-card"><span class="step-number">02 / AUTOMATE</span><div class="step-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M7 13h15l-5 7M41 35H26l5-7M22 13H31c7 0 10 5 10 11v4M26 35H17C10 35 7 30 7 24v-4"/><circle cx="36" cy="10" r="3"/><circle cx="12" cy="38" r="3"/></svg></div><h3>GitHub Actions</h3><p>Ejecuta pruebas y activa tu workflow de integración y despliegue.</p><span class="card-tail">CI / CD <span>↗</span></span></article>
+          <article class="pipeline-card"><span class="step-number">03 / PACKAGE</span><div class="step-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 5 42 15v18L24 43 6 33V15L24 5Z"/><path d="M6 15l18 10 18-10M24 25v18M15 10l18 10"/></svg></div><h3>Docker</h3><p>Empaqueta Python y sus dependencias en una imagen reproducible.</p><span class="card-tail">CONTAINER <span>↗</span></span></article>
+          <article class="pipeline-card"><span class="step-number">04 / DEPLOY</span><div class="step-icon"><svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="8" y="7" width="32" height="14" rx="3"/><rect x="8" y="27" width="32" height="14" rx="3"/><path d="M14 14h8M14 34h8"/><circle cx="33" cy="14" r="2"/><circle cx="33" cy="34" r="2"/></svg></div><h3>AWS EC2</h3><p>Publica la nueva versión y comprueba la salud del servicio.</p><span class="card-tail">HTTP 200 <span>↗</span></span></article>
+        </div>
+      </section>
+
+      <section class="identity-section section" id="personalizar">
+        <div class="section-heading">
+          <div><span class="kicker">02 — TU PRIMER CAMBIO</span><h2>Esta instancia tiene <em>tu nombre</em><span class="accent-period">.</span></h2></div>
+          <p>Edita los datos, descarga el JSON, haz commit y observa cómo se publica la siguiente versión.</p>
+        </div>
+        <div class="identity-grid">
+          <article class="identity-preview" aria-label="Vista previa de tu perfil">
+            <div class="window-header"><div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div><span>my-profile.json / LIVE PREVIEW</span><span class="window-icon">↗</span></div>
+            <div class="preview-content">
+              <div class="profile-topline"><span><span class="online-dot"></span> DESPLEGADO EN LA NUBE</span><span class="mono">ID: 001</span></div>
+              <div class="avatar" id="profile-avatar" aria-hidden="true">TN</div>
+              <div class="profile-eyebrow">HOLA MUNDO, SOY</div>
+              <h3 id="profile-name">{{ profile.name }}</h3>
+              <p class="profile-role" id="profile-role">{{ profile.role }}</p>
+              <p class="profile-message" id="profile-message">“{{ profile.message }}”</p>
+              <div class="profile-tags"><span>⌖ <span id="profile-city">{{ profile.city }}</span></span><span>⚒ <span id="profile-tool">{{ profile.favorite_tool }}</span></span></div>
+              <a class="github-handle" id="profile-github" href="https://github.com/{{ profile.github | urlencode }}" target="_blank" rel="noopener noreferrer">github.com/{{ profile.github }} <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="preview-footer"><span class="mono">NEXT_CHALLENGE</span><span id="profile-challenge">{{ profile.challenge }}</span></div>
+          </article>
+          <div class="editor-panel">
+            <div class="editor-heading"><span class="editor-heading-icon">✳</span><div><h3>Personaliza tu versión</h3><p>Modifica los campos para generar tu propio <code>profile.json</code>.</p></div></div>
+            <form id="profile-form">
+              <div class="field-row">
+                <label>Tu nombre <input name="name" type="text" maxlength="70" required value="{{ profile.name }}" placeholder="Ada Lovelace"></label>
+                <label>Tu rol <input name="role" type="text" maxlength="70" required value="{{ profile.role }}" placeholder="Cloud Engineer"></label>
+              </div>
+              <div class="field-row">
+                <label>Ciudad <input name="city" type="text" maxlength="70" required value="{{ profile.city }}" placeholder="Valparaíso, Chile"></label>
+                <label>Usuario GitHub <input name="github" type="text" maxlength="39" required pattern="[A-Za-z0-9]([A-Za-z0-9-]{0,37}[A-Za-z0-9])?" value="{{ profile.github }}" placeholder="mi-usuario"></label>
+              </div>
+              <label>Herramienta favorita <input name="favorite_tool" type="text" maxlength="50" required value="{{ profile.favorite_tool }}" placeholder="Docker"></label>
+              <label>Tu mensaje en producción <textarea name="message" maxlength="180" required rows="3" placeholder="Mi primer deploy...">{{ profile.message }}</textarea></label>
+              <label>Próximo desafío <input name="challenge" type="text" maxlength="110" required value="{{ profile.challenge }}" placeholder="Monitorear mi aplicación"></label>
+              <div class="form-actions"><button class="button primary download-button" type="submit">Descargar profile.json <span aria-hidden="true">↓</span></button><button type="reset" class="button minimal">Restaurar</button></div>
+              <p class="editor-note" id="editor-feedback" role="status">La vista previa es local. Para publicar, reemplaza el archivo en GitHub y haz <code>git push</code>.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="terminal-section section" aria-labelledby="terminal-title">
+        <div class="terminal-top"><div class="terminal-heading"><span class="terminal-symbol">&gt;_</span><div><span class="kicker">03 — PUBLICAR EL CAMBIO</span><h2 id="terminal-title">Del editor a la nube.</h2></div></div><span class="terminal-badge"><span class="online-dot"></span> READY TO SHIP</span></div>
+        <div class="terminal-window"><div class="window-header"><div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div><span>terminal — ~/taller1-devops-sre</span><span class="window-icon">●</span></div><pre><code><span class="cmd-comment"># Reemplaza profile.json con el archivo descargado</span>
+<span class="cmd-prompt">$</span> git add profile.json
+<span class="cmd-prompt">$</span> git commit -m <span class="cmd-string">"feat: personalizar mi sitio"</span>
+<span class="cmd-prompt">$</span> git push origin main
+
+<span class="cmd-success">✓</span> GitHub Actions valida el proyecto
+<span class="cmd-success">✓</span> Docker crea la imagen
+<span class="cmd-success">✓</span> AWS EC2 recibe la nueva versión</code></pre></div>
+        <div class="terminal-callout"><span class="callout-icon">!</span><p><strong>Reto del taller:</strong> Después del primer despliegue, cambia nuevamente tu mensaje. Compara ambos commits y verifica que la nueva versión aparezca en EC2.</p></div>
+      </section>
+    </main>
+    <footer class="footer"><span>© DEVOPS / SRE LAB — TALLER 01</span><span>BUILD → SHIP → OBSERVE <span class="footer-heart">◆</span></span><span>PYTHON / DOCKER / AWS</span></footer>
+  </div>
+</body>
+</html>

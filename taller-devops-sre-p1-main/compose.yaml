@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: taller1-devops-sre:latest
+    container_name: taller1-devops-sre
+    ports:
+      - "80:8000"
+    environment:
+      DEPLOY_SHA: "${DEPLOY_SHA:-local}"
+    restart: unless-stopped
