@@ -1,8 +1,8 @@
 {
-  "name": "Tu Nombre Aquí",
+  "name": "Giovanni Salas",
   "role": "Futuro/a DevOps Engineer",
   "city": "Valparaíso, Chile",
-  "github": "tu-usuario",
+  "github": "giovsalas-cell",
   "favorite_tool": "Docker",
   "message": "Este es mi primer despliegue automatizado. ¡Hola, producción!",
   "challenge": "Automatizar mi próximo despliegue"
