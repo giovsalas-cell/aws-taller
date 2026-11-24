@@ -18,7 +18,7 @@ jobs:
       - name: copiar archivos al servidor
         uses: appleboy/scp-action@v1
         with:
-          host: ${{ secrets.IP_PUBLICA }}
+          host: ${{ secrets.IP_PUBLIC }}
           username: ${{ secrets.username }}
           key: ${{ secrets.key }}
           source: "."
@@ -28,7 +28,7 @@ jobs:
       - name: levantar contenedor
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.IP_PUBLICA }}
+          host: ${{ secrets.IP_PUBLIC }}
           username: ${{ secrets.username }}
           key: ${{ secrets.key }}
           script: |
