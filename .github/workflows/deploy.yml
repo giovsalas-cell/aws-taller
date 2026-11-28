@@ -38,9 +38,4 @@ jobs:
             cd ~/proyecto1
             docker compose down
             DOCKER_BUILDKIT=0 docker build -t taller1-devops-sre:latest .
-            docker compose up -d --no-build
-          script: |
-            cd ~/proyecto1
-            docker compose down
-            DOCKER_BUILDKIT=0 docker build -t taller1-devops-sre:latest .
             DEPLOY_SHA=${{ github.sha }} docker compose up -d --no-build
